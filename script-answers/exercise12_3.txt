@@ -1,0 +1,77 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250321164208
+Username: DESKTOP-QDD9JN5\lotta
+RunAs User: DESKTOP-QDD9JN5\lotta
+Configuration Name: 
+Machine: DESKTOP-QDD9JN5 (Microsoft Windows NT 10.0.22631.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 17228
+PSVersion: 5.1.22621.4391
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.4391
+BuildVersion: 10.0.22621.4391
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is script-answers/exercise12_3.txt
+PS C:\Users\lotta\onedrive\Containers-applications> docker run -it --name my_ubuntu ubuntu bash
+
+root@0c1c9a6fc42c:/# mkdir -p /usr/src/app
+root@0c1c9a6fc42c:/# nano /usr/src/app/index.js
+bash: nano: command not found
+root@0c1c9a6fc42c:/# apt-get update && apt-get install -y nano
+Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:5 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [34.0 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+Get:7 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [845 kB]
+Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+Get:9 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+Get:10 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1060 kB]
+Get:11 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [916 kB]
+Get:12 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [38.7 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1171 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [962 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1351 kB]
+Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [16.5 kB]
+Fetched 28.6 MB in 13s (2178 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  hunspell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.
+Need to get 282 kB of archives.
+After this operation, 856 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 nano amd64 7.2-2ubuntu0.1 [282 kB]
+Fetched 282 kB in 1s (544 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package nano.
+(Reading database ... 4379 files and directories currently installed.)
+Preparing to unpack .../nano_7.2-2ubuntu0.1_amd64.deb ...
+Unpacking nano (7.2-2ubuntu0.1) ...
+Setting up nano (7.2-2ubuntu0.1) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/ma
+n1/nano.1.gz (of link group editor) doesn't exist
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/pico.1.gz because associated file /usr/share/man/man1
+/nano.1.gz (of link group pico) doesn't exist
+root@0c1c9a6fc42c:/# nano /usr/src/app/index.js
+root@0c1c9a6fc42c:/# exit
+exit
+PS C:\Users\lotta\onedrive\Containers-applications> Stop-Transcript
+
+**********************
+Windows PowerShell transcript end
+End time: 20250321164415
+**********************
