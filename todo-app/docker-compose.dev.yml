@@ -9,13 +9,50 @@ services:
     volumes:
       - ./todo-frontend/:/usr/src/app
     container_name: todo-frontend
+    environment:
+      - VITE_BACKEND_URL=http://localhost:8080/api  # Make sure the frontend calls the backend via Nginx
+
+  todo-backend:
+    build:
+      context: ./todo-backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todo-backend/:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://root:example@mongo:27017/the_database?authSource=admin
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: initialized-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes:
+      - ./todo-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongo_data:/data/db
+
+  redis:
+    image: redis
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - ./redis_data:/data
 
   nginx:
     image: nginx:1.20.1
     volumes:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
     ports:
-      - 8080:80
+      - "8080:80"
     container_name: reverse-proxy
     depends_on:
-      - app  # Ensures frontend starts before nginx
+      - app
+      - todo-backend
+
+volumes:
+  mongo_data:
+  redis_data:
