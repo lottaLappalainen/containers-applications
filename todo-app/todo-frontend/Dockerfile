@@ -1,15 +1,16 @@
-FROM node:20
+FROM node:20 AS build-stage
 
 WORKDIR /usr/src/app
 
 COPY . .
 
 RUN npm ci
-
 RUN npm run build
 
+FROM nginx:1.25-alpine
 
-RUN npm install -g serve
+COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
 
+EXPOSE 80
 
-CMD ["serve", "dist"]
+CMD ["nginx", "-g", "daemon off;"]
